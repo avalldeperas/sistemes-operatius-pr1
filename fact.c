@@ -43,16 +43,22 @@ main (int argc, char *argv[])
   if(fact_table == NULL) printf("Memory not available");
 
   // Compute fact(n) for i=0 to n
-  int fact = 1;
-  for (i = 0; i < n; i++){
-    if (i > 1) {
-      fact = fact * (i+1);
-      printf("fact = %d\n", fact);
-    }
+  int stringSize, fact = 1;
+
+  for (i = 0; i <= n; i++){
+    if (i > 0) fact = fact * i;
+
     fact_table[i].n = i;
     fact_table[i].lli_fact = fact;
-    fact_table[i].str_fact = "c";
-    // fact = 0;
+
+    stringSize = log(fact) + 1; // realloc?
+    printf("stringSize = %d\n", stringSize);
+    printf("fact = %d\n", fact);
+
+    char str_fact[stringSize];
+    sprintf(str_fact, "%d", fact);
+    printf("str_fact = %s\n", str_fact);
+    fact_table[i].str_fact = str_fact;
   }
 
 /* Your code ends here */
