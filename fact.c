@@ -38,12 +38,13 @@ main (int argc, char *argv[])
 
 /* Your code starts here */
   // Allocate memory
-  printf("%ld\n", n*sizeof(int));
+  printf("Output:\n");
   fact_table = malloc(n*sizeof(int)); // request space for n integers
   if(fact_table == NULL) printf("Memory not available");
 
   // Compute fact(n) for i=0 to n
-  int stringSize, fact = 1;
+  int stringSize;
+  long long fact = 1;
 
   for (i = 0; i <= n; i++){
     if (i > 0) fact = fact * i;
@@ -52,13 +53,10 @@ main (int argc, char *argv[])
     fact_table[i].lli_fact = fact;
 
     stringSize = log(fact) + 1; // realloc?
-    printf("stringSize = %d\n", stringSize);
-    printf("fact = %d\n", fact);
 
-    char str_fact[stringSize];
-    sprintf(str_fact, "%d", fact);
-    printf("str_fact = %s\n", str_fact);
-    fact_table[i].str_fact = str_fact;
+    char str[stringSize];
+    sprintf(str, "%lld", fact);
+    fact_table[i].str_fact = str;
   }
 
 /* Your code ends here */
